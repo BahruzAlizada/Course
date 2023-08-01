@@ -1,12 +1,21 @@
-var builder = WebApplication.CreateBuilder(args);
+using Autofac.Extensions.DependencyInjection;
+using Autofac;
+using BusinessLayer.DependencyResolvers.Autofac;
+using DataAccessLayer.Mappers.AutoMapper;
 
+var builder = WebApplication.CreateBuilder(args);
+Host.CreateDefaultBuilder(args).UseServiceProviderFactory(new AutofacServiceProviderFactory())
+.ConfigureContainer<ContainerBuilder>(builder =>
+{
+    builder.RegisterModule(new AutofacBusinessModule());
+});
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddAutoMapper(typeof(DtoMapper));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
