@@ -1,9 +1,9 @@
-﻿using EntityLayer.Concrete;
+﻿using EntityLayer.DTOs;
 using FluentValidation;
 
 namespace BusinessLayer.ValidationRules.FluentValidation
 {
-    public class CategoryValidator : AbstractValidator<Category>
+    public class CategoryValidator : AbstractValidator<CategoryForHomeDto>
     {
         public CategoryValidator()
         {

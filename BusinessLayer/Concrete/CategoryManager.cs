@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessLayer.Abstract;
+using BusinessLayer.BusinessAspects.Autofac;
 using BusinessLayer.Constants;
 using CoreLayer.Utilities.Business;
 using CoreLayer.Utilities.Results.Abstract;
@@ -19,6 +20,7 @@ namespace BusinessLayer.Concrete
             _categoryDal= categoryDal;
             _mapper = mapper;
         }
+        [SecuredOperation("admin")]
         public IResult Add(CategoryForHomeDto category)
         {
             var result = BusinessRules.Run(CheckIfCategoryNameExisted(category.CategoryName));

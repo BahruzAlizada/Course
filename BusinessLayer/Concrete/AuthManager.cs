@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoreLayer.Entities
+namespace BusinessLayer.Concrete
 {
-    public interface IDto
+    internal class AuthManager
     {
     }
 }

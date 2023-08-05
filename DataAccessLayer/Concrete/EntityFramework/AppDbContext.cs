@@ -1,4 +1,5 @@
-﻿using EntityLayer.Concrete;
+﻿using CoreLayer.Entities.Concrete;
+using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Concrete.EntityFramework
@@ -13,5 +14,8 @@ namespace DataAccessLayer.Concrete.EntityFramework
         public DbSet<Category> Categories { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
     }
 }
