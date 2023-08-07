@@ -2,6 +2,7 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.BusinessAspects.Autofac;
 using BusinessLayer.Constants;
+using CoreLayer.Aspects.Caching;
 using CoreLayer.Utilities.Business;
 using CoreLayer.Utilities.Results.Abstract;
 using CoreLayer.Utilities.Results.Concrete;
@@ -21,6 +22,7 @@ namespace BusinessLayer.Concrete
             _mapper = mapper;
         }
         [SecuredOperation("admin")]
+        [CacheRemoveAspect(("ICategoryService.Get"))]
         public IResult Add(CategoryForHomeDto category)
         {
             var result = BusinessRules.Run(CheckIfCategoryNameExisted(category.CategoryName));

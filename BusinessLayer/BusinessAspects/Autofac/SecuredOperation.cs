@@ -1,11 +1,15 @@
 ﻿using BusinessLayer.Constants;
 using Castle.DynamicProxy;
+using CoreLayer.Extensions;
 using CoreLayer.Utilities.Interceptors;
+using CoreLayer.Utilities.IoC;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Castle.DynamicProxy;
 using System.Threading.Tasks;
 
 namespace BusinessLayer.BusinessAspects.Autofac
@@ -18,7 +22,7 @@ namespace BusinessLayer.BusinessAspects.Autofac
         public SecuredOperation(string roles)
         {
             _roles = roles.Split(','); //Rolları vergül ilə ayırmaq üçün
-            _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
+            _httpContextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>(); // Windows form
 
         }
 
